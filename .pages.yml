@@ -1,30 +1,111 @@
 media:
   input: public
-  output: /
+  output: /images
+
 content:
-  - name: posts
-    label: Posts
+  - name: products
+    label: Productos
     type: collection
-    path: src/content/blog
+    path: src/content/products
     view:
-      fields: [ title, draft, date ]
+      fields: [name, price, category, available]
     fields:
-      - { name: author, label: Author, type: string }
-      - { name: pubDatetime, label: Date, type: date }
-      - { name: modDatetime, label: Date, type: date }
-      - { name: title, label: Title, type: string, required: true }
-      - { name: ogImage, label: Title, type: string }
-      - { name: slug, label: Slug, type: string }
-      - { name: featured, label: Featured, type: boolean }
-      - { name: draft, label: Draft, type: boolean }
-      - { name: tags, label: Tags, type: string, list: true }
-      - { name: description, label: Description, type: string }
-      - { name: body, label: Body, type: rich-text }
-  - name: about
-    label: About page
-    type: file
-    path: src/pages/about.md
+      - name: name
+        label: Nombre del producto
+        type: string
+        required: true
+
+      - name: slug
+        label: Slug
+        type: string
+
+      - name: category
+        label: Categoría
+        type: string
+
+      - name: description
+        label: Descripción
+        type: string
+
+      - name: ingredients
+        label: Ingredientes
+        type: string
+        list: true
+
+      - name: price
+        label: Precio
+        type: number
+        required: true
+
+      - name: image
+        label: Imagen
+        type: image
+
+      - name: available
+        label: Disponible
+        type: boolean
+        default: true
+
+      - name: body
+        label: Información adicional
+        type: rich-text
+
+
+  - name: drinks
+    label: Bebidas
+    type: collection
+    path: src/content/drinks
+    view:
+      fields: [name, price, available]
     fields:
-      - { name: layout, type: string, hidden: true, default: "../layouts/AboutLayout.astro" }
-      - { name: title, label: Title, type: string }
-      - { name: body, label: Body, type: rich-text, options: { input: public/assets, output: /assets } }
+      - name: name
+        label: Nombre de la bebida
+        type: string
+        required: true
+
+      - name: slug
+        label: Slug
+        type: string
+
+      - name: description
+        label: Descripción
+        type: string
+
+      - name: price
+        label: Precio
+        type: number
+        required: true
+
+      - name: image
+        label: Imagen
+        type: image
+
+      - name: available
+        label: Disponible
+        type: boolean
+        default: true
+
+      - name: body
+        label: Información adicional
+        type: rich-text
+
+
+  - name: categories
+    label: Categorías de menú
+    type: collection
+    path: src/content/categories
+    view:
+      fields: [name]
+    fields:
+      - name: name
+        label: Nombre de la categoría
+        type: string
+        required: true
+
+      - name: slug
+        label: Slug
+        type: string
+
+      - name: description
+        label: Descripción
+        type: string
