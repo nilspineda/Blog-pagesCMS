@@ -10,46 +10,15 @@ content:
     view:
       fields: [name, price, category, available]
     fields:
-      - name: name
-        label: Nombre del producto
-        type: string
-        required: true
-
-      - name: slug
-        label: Slug
-        type: string
-
-      - name: category
-        label: Categoría
-        type: string
-
-      - name: description
-        label: Descripción
-        type: string
-
-      - name: ingredients
-        label: Ingredientes
-        type: string
-        list: true
-
-      - name: price
-        label: Precio
-        type: number
-        required: true
-
-      - name: image
-        label: Imagen
-        type: image
-
-      - name: available
-        label: Disponible
-        type: boolean
-        default: true
-
-      - name: body
-        label: Información adicional
-        type: rich-text
-
+      - { name: name, label: Nombre, type: string, required: true }
+      - { name: slug, label: Slug, type: string }
+      - { name: category, label: Categoría, type: string }
+      - { name: description, label: Descripción, type: string }
+      - { name: ingredients, label: Ingredientes, type: string, list: true }
+      - { name: price, label: Precio, type: number, required: true }
+      - { name: image, label: Imagen, type: image }
+      - { name: available, label: Disponible, type: boolean, default: true }
+      - { name: body, label: Body, type: rich-text }
 
   - name: drinks
     label: Bebidas
@@ -58,54 +27,21 @@ content:
     view:
       fields: [name, price, available]
     fields:
-      - name: name
-        label: Nombre de la bebida
-        type: string
-        required: true
-
-      - name: slug
-        label: Slug
-        type: string
-
-      - name: description
-        label: Descripción
-        type: string
-
-      - name: price
-        label: Precio
-        type: number
-        required: true
-
-      - name: image
-        label: Imagen
-        type: image
-
-      - name: available
-        label: Disponible
-        type: boolean
-        default: true
-
-      - name: body
-        label: Información adicional
-        type: rich-text
-
+      - { name: name, label: Nombre, type: string, required: true }
+      - { name: slug, label: Slug, type: string }
+      - { name: description, label: Descripción, type: string }
+      - { name: price, label: Precio, type: number }
+      - { name: image, label: Imagen, type: image }
+      - { name: available, label: Disponible, type: boolean, default: true }
+      - { name: body, label: Body, type: rich-text }
 
   - name: categories
-    label: Categorías de menú
+    label: Categorías
     type: collection
     path: src/content/categories
     view:
       fields: [name]
     fields:
-      - name: name
-        label: Nombre de la categoría
-        type: string
-        required: true
-
-      - name: slug
-        label: Slug
-        type: string
-
-      - name: description
-        label: Descripción
-        type: string
+      - { name: name, label: Nombre, type: string, required: true }
+      - { name: slug, label: Slug, type: string }
+      - { name: description, label: Descripción, type: string }
