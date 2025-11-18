@@ -1,6 +1,6 @@
 media:
   input: public
-  output: /images
+  output: /
 
 content:
   - name: products
@@ -8,40 +8,13 @@ content:
     type: collection
     path: src/content/products
     view:
-      fields: [name, price, category, available]
+      fields: [ name, price, category, available ]
     fields:
-      - { name: name, label: Nombre, type: string, required: true }
-      - { name: slug, label: Slug, type: string }
-      - { name: category, label: Categoría, type: string }
+      - { name: name, label: Nombre del producto, type: string, required: true }
+      - { name: price, label: Precio, type: number, required: true }
       - { name: description, label: Descripción, type: string }
       - { name: ingredients, label: Ingredientes, type: string, list: true }
-      - { name: price, label: Precio, type: number, required: true }
-      - { name: image, label: Imagen, type: image }
+      - { name: category, label: Categoría, type: string }
       - { name: available, label: Disponible, type: boolean, default: true }
+      - { name: image, label: Imagen, type: string, options: { input: public/images/products, output: /images/products } }
       - { name: body, label: Body, type: rich-text }
-
-  - name: drinks
-    label: Bebidas
-    type: collection
-    path: src/content/drinks
-    view:
-      fields: [name, price, available]
-    fields:
-      - { name: name, label: Nombre, type: string, required: true }
-      - { name: slug, label: Slug, type: string }
-      - { name: description, label: Descripción, type: string }
-      - { name: price, label: Precio, type: number }
-      - { name: image, label: Imagen, type: image }
-      - { name: available, label: Disponible, type: boolean, default: true }
-      - { name: body, label: Body, type: rich-text }
-
-  - name: categories
-    label: Categorías
-    type: collection
-    path: src/content/categories
-    view:
-      fields: [name]
-    fields:
-      - { name: name, label: Nombre, type: string, required: true }
-      - { name: slug, label: Slug, type: string }
-      - { name: description, label: Descripción, type: string }

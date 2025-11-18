@@ -3,7 +3,6 @@ import { defineCollection, z } from "astro:content";
 const products = defineCollection({
   schema: z.object({
     name: z.string(),
-    slug: z.string().optional(),
     category: z.string(),
     description: z.string().optional(),
     ingredients: z.array(z.string()).optional(),
@@ -17,7 +16,6 @@ const products = defineCollection({
 const drinks = defineCollection({
   schema: z.object({
     name: z.string(),
-    slug: z.string().optional(),
     description: z.string().optional(),
     price: z.number(),
     image: z.string().optional(),
@@ -29,7 +27,6 @@ const drinks = defineCollection({
 const categories = defineCollection({
   schema: z.object({
     name: z.string(),
-    slug: z.string().optional(),
     description: z.string().optional(),
   }),
 });

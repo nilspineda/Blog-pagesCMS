@@ -1,0 +1,97 @@
+---
+export interface Props {
+  name: string;
+  price: number;
+  image?: string;
+  description?: string;
+  ingredients?: string[];
+  category?: string;
+  available?: boolean;
+}
+
+const {
+  name,
+  price,
+  image,
+  description,
+  ingredients,
+  category,
+  available = true,
+} = Astro.props;
+---
+
+<div
+  class="bg-white rounded-2xl shadow-md overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-300"
+>
+  <!-- Imagen -->
+  <div class="w-full h-48 bg-gray-100 overflow-hidden">
+    {
+      image ? (
+        <img src={image} alt={name} class="w-full h-full object-cover" />
+      ) : (
+        <div class="flex items-center justify-center h-full text-gray-400">
+          No Image
+        </div>
+      )
+    }
+  </div>
+
+  <!-- Contenido -->
+  <div class="p-4 flex flex-col gap-3">
+    <!-- Nombre -->
+    <h3 class="text-xl font-semibold text-gray-800">{name}</h3>
+
+    <!-- Categoría -->
+    {
+      category && (
+        <span class="inline-block bg-gray-200 text-gray-600 text-sm px-3 py-1 rounded-full">
+          {category}
+        </span>
+      )
+    }
+
+    <!-- Descripción -->
+    {description && <p class="text-gray-600 text-sm">{description}</p>}
+
+    <!-- Ingredientes -->
+    {
+      ingredients && (
+        <ul class="text-sm text-gray-500 flex flex-wrap gap-1">
+          {ingredients.map(ing => (
+            <li class="px-2 py-1 bg-gray-100 rounded-lg">{ing}</li>
+          ))}
+        </ul>
+      )
+    }
+
+    <!-- Precio -->
+    <div class="flex justify-between items-center mt-3">
+      <span class="text-lg font-bold text-green-600">${price.toFixed(2)}</span>
+
+      {
+        available ? (
+          <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full">
+            Disponible
+          </span>
+        ) : (
+          <span class="bg-red-100 text-red-700 text-xs px-3 py-1 rounded-full">
+            Agotado
+          </span>
+        )
+      }
+    </div>
+
+    <!-- CTA -->
+    <a
+      href={`https://wa.me/573041444264?text=Hola,%20quiero%20pedir:%20${encodeURIComponent(name)}`}
+      target="_blank"
+      class={`mt-3 w-full text-center py-2 text-white font-semibold rounded-xl transition ${
+        available
+          ? "bg-green-600 hover:bg-green-700"
+          : "bg-gray-400 cursor-not-allowed"
+      }`}
+    >
+      {available ? "Pedir ahora" : "No disponible"}
+    </a>
+  </div>
+</div>
