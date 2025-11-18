@@ -1,6 +1,6 @@
 media:
-  input: public
-  output: /images
+  input: public/images
+  output: /images/
 
 content:
   - name: products
